@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { DNA } from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
 import { fetchImageData } from "../../api/api";
+import ImageGallery from "../ImageGallery/ImageGallery";
 
 export default function App() {
   const [error, setError] = useState(false);
@@ -29,6 +31,8 @@ export default function App() {
   return (
     <div>
       <SearchBar onSubmit={handleGetQueryName} />
+      {images.length > 0 && <ImageGallery images={images} />}
+      {loading && <DNA />}
     </div>
   );
 }
